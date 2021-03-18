@@ -30,13 +30,15 @@ export default function HogCard({name, image, specialty, greased, weight, medal,
 }
 
     const [hidden, setHidden] = useState(false)
-
+    const [hideHog, setHideHog] = useState(false)
     function showDetails() {
         setHidden(!hidden)
     }
 
     return (
-         <div onClick={showDetails} style={{display: greaseFilter && !greased? "none" : "block"}}>
+        <>
+        <br></br>
+         <div onClick={showDetails} style={{display: greaseFilter && !greased? "none" : "block"}} style={{display: hideHog ? "none" : "block"}}>
             <p>{name}</p>
             <img src={imageMapper[image]} />
             <div className="details" style={{display: hidden? "none": "block"}}>
@@ -44,7 +46,13 @@ export default function HogCard({name, image, specialty, greased, weight, medal,
                 <p>Greased: {greased.toString()}</p>
                 <p>Weight: {weight}</p>
                 <p>Highest Medal Achieved: {medal}</p>
+                
             </div>
+            
          </div>
+         <p style={{display: hideHog ? "block" : "none"}}>{name}</p>
+         <button onClick={() => setHideHog(!hideHog)} > {hideHog ? "Show" : "Hide"} Hog</button>
+         <br></br>
+         </>
     )
 }

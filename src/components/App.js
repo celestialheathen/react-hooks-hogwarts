@@ -8,7 +8,8 @@ function App() {
 
   const [greaseFilter, setGreaseFilter] = useState(false)
   const [sorted, setSorted] = useState(false)
-
+  const [sortedWeight, setSortedWeight] = useState(false)
+  
   return (
     <div className="App">
       <Nav />
@@ -16,8 +17,9 @@ function App() {
       <br></br>
       <input type="checkbox" value={sorted} onChange={e => setSorted(!sorted)}/> Sort by Name
       <br></br>
+      <input type="checkbox" value={sortedWeight} onChange={e => setSortedWeight(!sortedWeight)} /> Sort by Weight
       {/* <button onClick={}>Click to sort by weight</button> */}
-      <MainContainer greaseFilter={greaseFilter} setGreaseFilter={setGreaseFilter} sorted={sorted}/>
+      <MainContainer greaseFilter={greaseFilter} setGreaseFilter={setGreaseFilter} sorted={sorted} sortedWeight={sortedWeight}/>
     </div>
   );
 }
